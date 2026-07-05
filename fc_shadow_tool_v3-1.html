@@ -1,0 +1,23 @@
+<!doctype html><html lang='ko'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<style>
+body{font-family:Arial;background:#111827;color:#fff;padding:18px}
+.wrap{max-width:430px;margin:auto}.btns{display:flex;gap:8px}.btns button{flex:1}
+button,input{padding:12px;border:none;border-radius:10px;margin:6px 0}
+button{background:#2563eb;color:#fff}input{width:100%}.out{background:#1f2937;padding:12px;border-radius:10px;margin-top:10px}
+</style><div class=wrap><h2>FC 그림자 툴</h2>
+<div class=btns><button onclick="sel('toty')">22 TOTY ICON</button><button onclick="sel('juve')">JUVE AMBASSADOR</button></div>
+<input id=size type=number placeholder='이미지 크기(px)'>
+<button onclick=calc()>계산</button><div id=out class=out>시즌을 선택하세요.</div></div>
+<script>
+let cfg={name:'22 TOTY ICON',color:'#5BE6FF',op:70,dist:0,spread:45,base:24};
+function sel(t){
+ if(t==='toty') cfg={name:'22 TOTY ICON',color:'#5BE6FF',op:70,dist:0,spread:45,base:24};
+ else cfg={name:'JUVENTUS AMBASSADOR ICON',color:'#FEB703',op:20,dist:0,spread:27,base:15};
+ out.innerHTML='선택: '+cfg.name;
+}
+function calc(){
+ let s=parseFloat(size.value); if(isNaN(s)||s<=0){out.innerHTML='크기를 입력하세요';return;}
+ let blur=Math.round((s/256)*cfg.base);
+ out.innerHTML=`<b>${cfg.name}</b><br>색상: ${cfg.color}<br>불투명도: ${cfg.op}%<br>거리: ${cfg.dist}<br>확산: ${cfg.spread}<br>크기: <b>${blur}</b>`;
+}
+</script>
